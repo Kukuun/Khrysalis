@@ -1,0 +1,14 @@
+# Binaries
+**/Bin/
+!Vendor/Premake/Bin/
+Bin-int/
+
+# Khrysalis files
+*.log
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user

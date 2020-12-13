@@ -1,0 +1,2 @@
+[submodule "Khrysalis.Engine/Vendor/spdlog"]
+	url = https://github.com/Kukuun/spdlog
