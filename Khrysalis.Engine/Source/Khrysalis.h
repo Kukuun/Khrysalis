@@ -9,3 +9,6 @@
 #include "Khrysalis/Inputs/Input.h"
 #include "Khrysalis/Inputs/KeyCodes.h"
 #include "Khrysalis/Inputs/MouseCodes.h"
+
+#include "Khrysalis/Maths/Vector2.h"
+#include "Khrysalis/Maths/Vector3.h"
