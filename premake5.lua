@@ -23,11 +23,13 @@ workspace "Khrysalis"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
----- Include directories relative to root folder (solution directory)
---IncludeDir = {}
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "%{wks.location}/Khrysalis.Engine/Vendor/glfw/include"
 
 group "Dependencies"
 	include "Vendor/Premake"
+	include "Khrysalis.Engine/Vendor/glfw"
 group ""
 
 include "Khrysalis.Engine"
