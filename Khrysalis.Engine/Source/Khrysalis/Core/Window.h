@@ -33,7 +33,7 @@ namespace Khrysalis {
 		void CenterWindow();
 		void Shutdown();
 
-		GLFWwindow* GetWindow() const { return _window; }
+		GLFWwindow* GetNativeWindow() const { return _window; }
 
 		int16_t GetWidth() const { return _data.Width; }
 		int16_t GetHeight() const { return _data.Height; }

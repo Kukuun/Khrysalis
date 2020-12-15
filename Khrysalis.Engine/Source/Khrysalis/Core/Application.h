@@ -20,6 +20,7 @@ namespace Khrysalis {
 		void OnEvent(Event& event);
 
 		static Application& Get() { return *Instance; }
+		Window& GetWindow() const { return *_window; }
 		const std::string& GetName() { return _name; }
 		const Version& GetVersion() { return _version; }
 
