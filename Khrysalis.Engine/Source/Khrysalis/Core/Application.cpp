@@ -7,10 +7,26 @@ namespace Khrysalis {
 	Application* Application::Instance = nullptr;
 
 	Application::Application(const std::string& name, const Version& version) : _name(name), _version(version) {
-		KAL_ENGINE_ASSERT(!Instance, "Application already exists.")
-
 		Instance = this;
+
+		_window = std::make_unique<Window>(WindowProps());
+		_window->SetEventCallback(KAL_BIND_EVENT_FN(Application::OnEvent));
 	}
 
-	void Application::Run() {}
+	void Application::Run() {
+		while (_running) {
+			_window->OnUpdate();
+		}
+	}
+
+	void Application::OnEvent(Event& event) {
+		EventDispatcher dispatcher(event);
+
+		dispatcher.Dispatch<WindowCloseEvent>(KAL_BIND_EVENT_FN(Application::OnWindowsClose));
+	}
+
+	bool Application::OnWindowsClose(WindowCloseEvent& event) {
+		_running = false;
+		return true;
+	}
 }
