@@ -29,4 +29,15 @@ namespace Khrysalis {
 		_running = false;
 		return true;
 	}
+
+	bool Application::OnWindowsResize(WindowResizeEvent& event) {
+		if (event.GetWidth() == 0 || event.GetHeight() == 0) {
+			_minimized = true;
+			return false;
+		}
+
+		_minimized = false;
+
+		return true;
+	}
 }

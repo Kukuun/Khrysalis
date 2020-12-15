@@ -30,6 +30,7 @@ namespace Khrysalis {
 	private:
 		void Run();
 		bool OnWindowsClose(WindowCloseEvent& event);
+		bool OnWindowsResize(WindowResizeEvent& event);
 
 	private:
 		static Application* Instance;
@@ -38,6 +39,7 @@ namespace Khrysalis {
 		Version _version;
 
 		bool _running = true;
+		bool _minimized = false;
 
 		friend int ::main(int argc, char** argv);
 	};

@@ -11,68 +11,68 @@ namespace Khrysalis {
 	const Vector2 Vector2::Infinity = Vector2(std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity());
 	const Vector2 Vector2::NegativeInfinity = Vector2(-std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity());
 
-	bool Khrysalis::Vector2::operator<(const Vector2& other) {
+	bool Vector2::operator<(const Vector2& other) {
 		return X < other.X && Y < other.Y;
 	}
 
-	bool Khrysalis::Vector2::operator>(const Vector2& other) {
+	bool Vector2::operator>(const Vector2& other) {
 		return X > other.X && Y > other.Y;
 	}
 
-	bool Khrysalis::Vector2::operator<=(const Vector2& other) {
+	bool Vector2::operator<=(const Vector2& other) {
 		return X <= other.X && Y <= other.Y;
 	}
 
-	bool Khrysalis::Vector2::operator>=(const Vector2& other) {
+	bool Vector2::operator>=(const Vector2& other) {
 		return X >= other.X && Y >= other.Y;
 	}
 
-	bool Khrysalis::Vector2::operator==(const Vector2& other) {
+	bool Vector2::operator==(const Vector2& other) {
 		return X == other.X && Y == other.Y;
 	}
 
-	bool Khrysalis::Vector2::operator!=(const Vector2& other) {
+	bool Vector2::operator!=(const Vector2& other) {
 		return X != other.X || Y != other.Y;
 	}
 
-	Khrysalis::Vector2 Khrysalis::Vector2::operator+(const Vector2& other) {
+	Vector2 Khrysalis::Vector2::operator+(const Vector2& other) {
 		return Vector2(X + other.X, Y + other.Y);
 	}
 
-	Khrysalis::Vector2 Khrysalis::Vector2::operator-(const Vector2& other) {
+	Vector2 Khrysalis::Vector2::operator-(const Vector2& other) {
 		return Vector2(X - other.X, Y - other.Y);
 	}
 
-	Khrysalis::Vector2 Khrysalis::Vector2::operator/(const Vector2& other) {
+	Vector2 Khrysalis::Vector2::operator/(const Vector2& other) {
 		return Vector2(X / other.X, Y / other.Y);
 	}
 
-	Khrysalis::Vector2 Khrysalis::Vector2::operator*(const Vector2& other) {
+	Vector2 Khrysalis::Vector2::operator*(const Vector2& other) {
 		return Vector2(X * other.X, Y * other.Y);
 	}
 
-	Khrysalis::Vector2& Khrysalis::Vector2::operator+=(const Vector2& other) {
+	Vector2& Khrysalis::Vector2::operator+=(const Vector2& other) {
 		X += other.X;
 		Y += other.Y;
 
 		return *this;
 	}
 
-	Khrysalis::Vector2& Khrysalis::Vector2::operator-=(const Vector2& other) {
+	Vector2& Khrysalis::Vector2::operator-=(const Vector2& other) {
 		X -= other.X;
 		Y -= other.Y;
 
 		return *this;
 	}
 
-	Khrysalis::Vector2& Khrysalis::Vector2::operator/=(const Vector2& other) {
+	Vector2& Khrysalis::Vector2::operator/=(const Vector2& other) {
 		X /= other.X;
 		Y /= other.Y;
 
 		return *this;
 	}
 
-	Khrysalis::Vector2& Khrysalis::Vector2::operator*=(const Vector2& other) {
+	Vector2& Khrysalis::Vector2::operator*=(const Vector2& other) {
 		X *= other.X;
 		Y *= other.Y;
 

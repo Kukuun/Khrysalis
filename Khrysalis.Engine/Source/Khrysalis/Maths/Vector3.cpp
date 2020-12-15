@@ -13,27 +13,27 @@ namespace Khrysalis {
 	const Vector3 Vector3::Infinity = Vector3(std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity(), std::numeric_limits<float>::infinity());
 	const Vector3 Vector3::NegativeInfinity = Vector3(-std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity());
 
-	bool Khrysalis::Vector3::operator<(const Vector3& other) {
+	bool Vector3::operator<(const Vector3& other) {
 		return X < other.X && Y < other.Y && Z < other.Z;
 	}
 
-	bool Khrysalis::Vector3::operator>(const Vector3& other) {
+	bool Vector3::operator>(const Vector3& other) {
 		return X > other.X&& Y > other.Y&& Z > other.Z;
 	}
 
-	bool Khrysalis::Vector3::operator<=(const Vector3& other) {
+	bool Vector3::operator<=(const Vector3& other) {
 		return X <= other.X && Y <= other.Y && Z <= other.Z;
 	}
 
-	bool Khrysalis::Vector3::operator>=(const Vector3& other) {
+	bool Vector3::operator>=(const Vector3& other) {
 		return X >= other.X && Y >= other.Y && Z >= other.Z;
 	}
 
-	bool Khrysalis::Vector3::operator!=(const Vector3& other) {
+	bool Vector3::operator!=(const Vector3& other) {
 		return X != other.X || Y != other.Y || Z != other.Z;
 	}
 
-	bool Khrysalis::Vector3::operator==(const Vector3& other) {
+	bool Vector3::operator==(const Vector3& other) {
 		return X == other.X && Y == other.Y || Z == other.Z;
 	}
 
