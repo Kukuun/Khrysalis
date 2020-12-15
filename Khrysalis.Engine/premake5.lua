@@ -25,11 +25,13 @@ project "Khrysalis.Engine"
 	includedirs
 	{
 		"Source",
-		"Vendor/spdlog/include"
+		"Vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
 	}
 
 	links
 	{
+		"GLFW"
 	}
 
 	filter "system:windows"

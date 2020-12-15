@@ -52,7 +52,7 @@ namespace Khrysalis {
 		template<typename T, typename F>
 		bool Dispatch(const F& func) {
 			if (_event.GetEventType() == T::GetStaticType()) {
-				_event.Handled != func(static_cast<T&>(_event));
+				_event.Handled |= func(static_cast<T&>(_event));
 				return true;
 			}
 
