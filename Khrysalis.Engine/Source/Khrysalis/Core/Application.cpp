@@ -3,6 +3,8 @@
 #include "Khrysalis/Debug/Log.h"
 #include "Khrysalis/Events/ApplicationEvent.h"
 
+#include <glfw/glfw3.h>
+
 namespace Khrysalis {
 	Application* Application::Instance = nullptr;
 
@@ -15,6 +17,16 @@ namespace Khrysalis {
 
 	void Application::Run() {
 		while (_running) {
+			float time = (float)glfwGetTime();
+			float deltaTime = time - _lastFrameTime;
+			_lastFrameTime = time;
+
+			if (!_minimized) {
+				for (Layer* layer : _layerStack) {
+					layer->OnUpdate(deltaTime);
+				}
+			}
+
 			_window->OnUpdate();
 		}
 	}
@@ -23,6 +35,23 @@ namespace Khrysalis {
 		EventDispatcher dispatcher(event);
 
 		dispatcher.Dispatch<WindowCloseEvent>(KAL_BIND_EVENT_FN(Application::OnWindowsClose));
+
+		for (auto iterator = _layerStack.end(); iterator != _layerStack.begin(); ) {
+			(*--iterator)->OnEvent(event);
+			if (event.Handled) {
+				break;
+			}
+		}
+	}
+
+	void Application::PushLayer(Layer* layer) {
+		_layerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* overlay) {
+		_layerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	bool Application::OnWindowsClose(WindowCloseEvent& event) {

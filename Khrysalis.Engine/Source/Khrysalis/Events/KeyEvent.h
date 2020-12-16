@@ -18,7 +18,7 @@ namespace Khrysalis {
 
 	class KeyPressedEvent : public KeyEvent {
 	public:
-		KeyPressedEvent(const KeyCode keyCode, const uint16_t repeatCount) : KeyEvent(keyCode), _repeatCount(repeatCount) {}
+		KeyPressedEvent(const KeyCode keyCode, const int16_t repeatCount) : KeyEvent(keyCode), _repeatCount(repeatCount) {}
 
 		std::string ToString() const override {
 			std::stringstream stream;
@@ -29,7 +29,7 @@ namespace Khrysalis {
 		EVENT_CLASS_TYPE(KeyPressed)
 
 	private:
-		uint16_t _repeatCount;
+		int16_t _repeatCount;
 	};
 
 	class KeyReleasedEvent : public KeyEvent {
