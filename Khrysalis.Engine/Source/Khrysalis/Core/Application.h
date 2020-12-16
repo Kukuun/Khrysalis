@@ -2,6 +2,7 @@
 
 #include "Khrysalis/Core/Window.h"
 #include "Khrysalis/Events/ApplicationEvent.h"
+#include "Khrysalis/Layers/LayerStack.h"
 
 int main(int argc, char** argv);
 
@@ -18,6 +19,9 @@ namespace Khrysalis {
 		virtual ~Application() = default;
 
 		void OnEvent(Event& event);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
 
 		static Application& Get() { return *Instance; }
 		Window& GetWindow() const { return *_window; }
@@ -37,6 +41,8 @@ namespace Khrysalis {
 		std::unique_ptr<Window> _window;
 		std::string _name;
 		Version _version;
+
+		LayerStack _layerStack;
 
 		bool _running = true;
 		bool _minimized = false;

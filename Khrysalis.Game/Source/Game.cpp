@@ -3,15 +3,15 @@
 #include <Khrysalis.h>
 #include <Khrysalis/Core/EntryPoint.h>
 
+#include "GameLayer.h"
+
 class Game : public Khrysalis::Application {
 public:
 	Game() : Application("App") {
-		KAL_INFO(__FUNCSIG__);
+		PushLayer(new GameLayer());
 	}
 
-	~Game() {
-		KAL_INFO(__FUNCSIG__);
-	}
+	~Game() {}
 };
 
 Khrysalis::Application* Khrysalis::CreateApplication() {

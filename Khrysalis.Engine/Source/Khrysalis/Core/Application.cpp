@@ -15,6 +15,11 @@ namespace Khrysalis {
 
 	void Application::Run() {
 		while (_running) {
+
+			for (Layer* layer : _layerStack) {
+				layer->OnUpdate();
+			}
+
 			_window->OnUpdate();
 		}
 	}
@@ -23,6 +28,23 @@ namespace Khrysalis {
 		EventDispatcher dispatcher(event);
 
 		dispatcher.Dispatch<WindowCloseEvent>(KAL_BIND_EVENT_FN(Application::OnWindowsClose));
+
+		for (auto iterator = _layerStack.end(); iterator != _layerStack.begin(); ) {
+			(*--iterator)->OnEvent(event);
+			if (event.Handled) {
+				break;
+			}
+		}
+	}
+
+	void Application::PushLayer(Layer* layer) {
+		_layerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* overlay) {
+		_layerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	bool Application::OnWindowsClose(WindowCloseEvent& event) {
