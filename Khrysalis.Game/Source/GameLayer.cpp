@@ -10,7 +10,9 @@ void GameLayer::OnDetach() {
 	KAL_TRACE("GameLayer::OnDetach");
 }
 
-void GameLayer::OnUpdate() {}
+void GameLayer::OnUpdate(float deltaTime) {
+	//KAL_TRACE("{0:.2f} m/s", deltaTime * 1000);
+}
 
 void GameLayer::OnEvent(Khrysalis::Event& event) {
 	KAL_TRACE("Event: {0}", event);

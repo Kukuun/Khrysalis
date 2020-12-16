@@ -44,6 +44,7 @@ namespace Khrysalis {
 
 		LayerStack _layerStack;
 
+		float _lastFrameTime = 0.0f;
 		bool _running = true;
 		bool _minimized = false;
 

@@ -9,6 +9,6 @@ public:
 
 	void OnAttach() override;
 	void OnDetach() override;
-	void OnUpdate() override;
+	void OnUpdate(float deltaTime) override;
 	void OnEvent(Khrysalis::Event& event) override;
 };

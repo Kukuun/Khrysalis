@@ -3,6 +3,8 @@
 #include "Khrysalis/Debug/Log.h"
 #include "Khrysalis/Events/ApplicationEvent.h"
 
+#include <glfw/glfw3.h>
+
 namespace Khrysalis {
 	Application* Application::Instance = nullptr;
 
@@ -15,9 +17,14 @@ namespace Khrysalis {
 
 	void Application::Run() {
 		while (_running) {
+			float time = (float)glfwGetTime();
+			float deltaTime = time - _lastFrameTime;
+			_lastFrameTime = time;
 
-			for (Layer* layer : _layerStack) {
-				layer->OnUpdate();
+			if (!_minimized) {
+				for (Layer* layer : _layerStack) {
+					layer->OnUpdate(deltaTime);
+				}
 			}
 
 			_window->OnUpdate();
