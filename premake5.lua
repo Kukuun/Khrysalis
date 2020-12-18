@@ -27,11 +27,13 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/Khrysalis.Engine/Vendor/glfw/include"
 IncludeDir["Glad"] = "%{wks.location}/Khrysalis.Engine/Vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/Khrysalis.Engine/Vendor/imgui"
 
 group "Dependencies"
 	include "Vendor/Premake"
 	include "Khrysalis.Engine/Vendor/glfw"
 	include "Khrysalis.Engine/Vendor/glad"
+	include "Khrysalis.Engine/Vendor/imgui"
 group ""
 
 include "Khrysalis.Engine"
