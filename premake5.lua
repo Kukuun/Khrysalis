@@ -26,10 +26,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "%{wks.location}/Khrysalis.Engine/Vendor/glfw/include"
+IncludeDir["Glad"] = "%{wks.location}/Khrysalis.Engine/Vendor/Glad/include"
 
 group "Dependencies"
 	include "Vendor/Premake"
 	include "Khrysalis.Engine/Vendor/glfw"
+	include "Khrysalis.Engine/Vendor/glad"
 group ""
 
 include "Khrysalis.Engine"
