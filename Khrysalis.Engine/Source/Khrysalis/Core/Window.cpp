@@ -5,6 +5,7 @@
 #include "Khrysalis/Events/MouseEvent.h"
 
 #include <glfw/glfw3.h>
+#include <glad/glad.h>
 
 namespace Khrysalis {
 	Window::Window(const WindowProps& properties) {
@@ -32,6 +33,9 @@ namespace Khrysalis {
 		_window = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
 
 		glfwMakeContextCurrent(_window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		KAL_ENGINE_ASSERT(status, "Failed to initialize Glad.");
+
 		glfwSetWindowUserPointer(_window, &_data);
 		SetVSync(true);
 
