@@ -4,8 +4,8 @@ project "Khrysalis.Engine"
 	cppdialect "C++17"
 	staticruntime "on"
 
-	targetdir ("%{wks.location}/Bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("%{wks.location}/Bin-Int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+	objdir ("%{wks.location}/Binaries/Intermediate/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "KalPch.h"
 	pchsource "Source/KalPch.cpp"
