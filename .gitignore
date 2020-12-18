@@ -1,7 +1,6 @@
 # Binaries
-**/Bin/
+**/Binaries/
 !Vendor/Premake/Bin/
-Bin-int/
 
 # Khrysalis files
 *.log
