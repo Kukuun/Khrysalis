@@ -3,6 +3,7 @@
 #include "Khrysalis/Core/Window.h"
 #include "Khrysalis/Events/ApplicationEvent.h"
 #include "Khrysalis/Layers/LayerStack.h"
+#include "Khrysalis/Layers/ImGuiLayer.h"
 
 int main(int argc, char** argv);
 
@@ -43,6 +44,7 @@ namespace Khrysalis {
 		Version _version;
 
 		LayerStack _layerStack;
+		ImGuiLayer* _imguiLayer;
 
 		float _lastFrameTime = 0.0f;
 		bool _running = true;

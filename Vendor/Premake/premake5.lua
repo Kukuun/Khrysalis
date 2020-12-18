@@ -1,8 +1,8 @@
 project "Premake"
 	kind "Utility"
 
-	targetdir ("%{wks.location}/Bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("%{wks.location}/Bin-Int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+	objdir ("%{wks.location}/Binaries/Intermediate/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{

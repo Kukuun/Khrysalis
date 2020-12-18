@@ -13,6 +13,9 @@ namespace Khrysalis {
 
 		_window = std::make_unique<Window>(WindowProps());
 		_window->SetEventCallback(KAL_BIND_EVENT_FN(Application::OnEvent));
+
+		_imguiLayer = new ImGuiLayer();
+		PushOverlay(_imguiLayer);
 	}
 
 	void Application::Run() {
@@ -25,6 +28,14 @@ namespace Khrysalis {
 				for (Layer* layer : _layerStack) {
 					layer->OnUpdate(deltaTime);
 				}
+
+				_imguiLayer->Begin();
+
+				for (Layer* layer : _layerStack) {
+					layer->OnImGuiRender();
+				}
+
+				_imguiLayer->End();
 			}
 
 			_window->OnUpdate();
@@ -38,10 +49,11 @@ namespace Khrysalis {
 		dispatcher.Dispatch<WindowResizeEvent>(KAL_BIND_EVENT_FN(Application::OnWindowsResize));
 
 		for (auto iterator = _layerStack.end(); iterator != _layerStack.begin(); ) {
-			(*--iterator)->OnEvent(event);
 			if (event.Handled) {
 				break;
 			}
+
+			(*--iterator)->OnEvent(event);
 		}
 	}
 
