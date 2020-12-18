@@ -38,10 +38,11 @@ namespace Khrysalis {
 		dispatcher.Dispatch<WindowResizeEvent>(KAL_BIND_EVENT_FN(Application::OnWindowsResize));
 
 		for (auto iterator = _layerStack.end(); iterator != _layerStack.begin(); ) {
-			(*--iterator)->OnEvent(event);
 			if (event.Handled) {
 				break;
 			}
+
+			(*--iterator)->OnEvent(event);
 		}
 	}
 
