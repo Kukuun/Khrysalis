@@ -82,4 +82,8 @@ namespace Khrysalis {
 
 		return true;
 	}
+
+	void Application::Close() {
+		_running = false;
+	}
 }

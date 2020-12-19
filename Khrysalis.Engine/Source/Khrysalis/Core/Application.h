@@ -32,6 +32,8 @@ namespace Khrysalis {
 		void SetName(const std::string& name) { _name = name; }
 		void SetVersion(const Version& version) { _version = version; }
 
+		void Close();
+
 	private:
 		void Run();
 		bool OnWindowsClose(WindowCloseEvent& event);

@@ -18,7 +18,7 @@ namespace Khrysalis {
 	}
 
 	bool Vector3::operator>(const Vector3& other) {
-		return X > other.X&& Y > other.Y&& Z > other.Z;
+		return X > other.X && Y > other.Y && Z > other.Z;
 	}
 
 	bool Vector3::operator<=(const Vector3& other) {
