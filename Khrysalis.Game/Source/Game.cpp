@@ -8,7 +8,7 @@
 class Game : public Khrysalis::Application {
 public:
 	Game() : Application("App") {
-		PushLayer(new GameLayer());
+		PushOverlay(new GameLayer());
 	}
 
 	~Game() {}

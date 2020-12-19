@@ -7,8 +7,9 @@ public:
 	GameLayer();
 	virtual ~GameLayer() = default;
 
-	void OnAttach() override;
-	void OnDetach() override;
-	void OnUpdate(float deltaTime) override;
-	void OnEvent(Khrysalis::Event& event) override;
+	virtual void OnAttach() override;
+	virtual void OnDetach() override;
+	virtual void OnUpdate(float deltaTime) override;
+	virtual void OnEvent(Khrysalis::Event& event) override;
+	virtual void OnImGuiRender() override;
 };
