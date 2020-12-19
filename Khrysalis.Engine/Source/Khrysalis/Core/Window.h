@@ -50,5 +50,8 @@ namespace Khrysalis {
 		};
 
 		WindowData _data;
+
+		uint16_t _minWidth = 720;
+		uint16_t _minHeight = 540;
 	};
 }

@@ -46,6 +46,7 @@ namespace Khrysalis {
 			data.EventCallback(event);
 		});
 
+		glfwSetWindowSizeLimits(_window, _minWidth, _minHeight, GLFW_DONT_CARE, GLFW_DONT_CARE);
 		glfwSetWindowSizeCallback(_window, [](GLFWwindow* window, int width, int height) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			data.Width = width;
