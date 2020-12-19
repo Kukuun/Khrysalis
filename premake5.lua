@@ -2,7 +2,7 @@ include "./Vendor/Premake/Premake_customization/solution_items.lua"
 
 workspace "Khrysalis"
 	architecture "x86_64"
-	startproject "Khrysalis.Game"
+	startproject "Khrysalis.Editor"
 
 	configurations
 	{
@@ -37,4 +37,5 @@ group "Dependencies"
 group ""
 
 include "Khrysalis.Engine"
+include "Khrysalis.Editor"
 include "Khrysalis.Game"
