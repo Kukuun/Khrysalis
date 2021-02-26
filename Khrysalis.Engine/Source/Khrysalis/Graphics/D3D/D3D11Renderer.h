@@ -25,11 +25,11 @@ namespace Khrysalis {
 
 		virtual void SetVsync(bool isVsync) override { _isVSync = isVsync; }
 
-		inline ID3D11Device* GetDevice() const { return _device.Get(); }
-		inline IDXGISwapChain* GetSwapChain() const { return _swapChain.Get(); }
-		inline ID3D11DeviceContext* GetDeviceContext() const { return _context.Get(); }
-		inline ID3D11RenderTargetView* GetRenderTargetView() const { return _renderTargetView.Get(); }
-		inline ID3D11DepthStencilView* GetDepthStencilView() const { return _depthStencilView.Get(); }
+		inline ID3D11Device& GetDevice() const { return *_device.Get(); }
+		inline IDXGISwapChain& GetSwapChain() const { return *_swapChain.Get(); }
+		inline ID3D11DeviceContext& GetDeviceContext() const { return *_context.Get(); }
+		inline ID3D11RenderTargetView& GetRenderTargetView() const { return *_renderTargetView.Get(); }
+		inline ID3D11DepthStencilView& GetDepthStencilView() const { return *_depthStencilView.Get(); }
 
 	private:
 		void CreateRenderTarget();

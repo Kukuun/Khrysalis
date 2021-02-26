@@ -33,11 +33,11 @@ namespace Khrysalis {
 
 		GLFWwindow* window = Application::Get().GetWindow().GetNativeWindow();
 		D3D11Renderer* renderer = static_cast<D3D11Renderer*>(Renderer::Get());
-		ID3D11Device* device = renderer->GetDevice();
-		ID3D11DeviceContext* context = renderer->GetDeviceContext();
+		ID3D11Device& device = renderer->GetDevice();
+		ID3D11DeviceContext& context = renderer->GetDeviceContext();
 
 		ImGui_ImplGlfw_InitForDirect3D(window, true);
-		ImGui_ImplDX11_Init(device, context);
+		ImGui_ImplDX11_Init(&device, &context);
 	}
 
 	void ImGuiLayer::OnDetach() {
