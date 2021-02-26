@@ -20,6 +20,7 @@ namespace Khrysalis {
 
 		ImGuiViewport* viewport = ImGui::GetMainViewport();
 		if (_viewport.X != viewport->Size.x || _viewport.Y != viewport->Size.y) {
+			_viewport = { viewport->Size.x, viewport->Size.y };
 			Renderer::Resize((uint16_t)viewport->Size.x, (uint16_t)viewport->Size.y);
 		}
 	}
@@ -80,8 +81,8 @@ namespace Khrysalis {
 
 		ImGui::Begin("Viewport");
 		
-		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		_viewport = { viewportPanelSize.x, viewportPanelSize.y };
+		//ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+		//_viewport = { viewportPanelSize.x, viewportPanelSize.y };
 		
 		ImGui::End();
 

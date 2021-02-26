@@ -17,7 +17,7 @@ namespace Khrysalis {
 	class D3D11Renderer : public RendererAPI {
 	public:
 		virtual void Initialize() override;
-		virtual void Clear(float red = 1.0f, float green = 1.0f, float blue = 1.0f) override;
+		virtual void Clear(float red, float green, float blue) override;
 		virtual void Submit(std::vector<float> vertices) override;
 		virtual void SwapBuffers() override;
 		virtual void Resize(uint16_t width, uint16_t height) override;

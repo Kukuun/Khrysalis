@@ -30,7 +30,7 @@ namespace Khrysalis {
 		swapChainDesc.OutputWindow = Application::Get().GetWindow().GetHwndHandle();											// Window to be used.
 		swapChainDesc.Windowed = TRUE;														// Windowed mode.
 		swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;								// Make driver select the most efficient presentation method.
-		swapChainDesc.Flags = 0;
+		swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
 		SelectAdapter();
 

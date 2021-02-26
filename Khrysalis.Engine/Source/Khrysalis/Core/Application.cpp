@@ -34,6 +34,8 @@ namespace Khrysalis {
 			_lastFrameTime = time;
 
 			if (!_minimized) {
+				_window->ProcessInput();
+
 				for (Layer* layer : _layerStack) {
 					layer->OnUpdate(deltaTime);
 				}

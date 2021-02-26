@@ -59,6 +59,7 @@ namespace Khrysalis {
 	}
 
 	void ImGuiLayer::Begin() {
+		Renderer::Clear();
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -70,7 +71,6 @@ namespace Khrysalis {
 		io.DisplaySize = ImVec2((float)application.GetWindow().GetWidth(), (float)application.GetWindow().GetHeight());
 
 		ImGui::Render();
-		Renderer::Clear();
 		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {

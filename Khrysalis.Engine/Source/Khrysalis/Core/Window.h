@@ -25,6 +25,7 @@ namespace Khrysalis {
 		~Window();
 
 		void Initialize(const WindowProps& properties);
+		void ProcessInput();
 		void OnUpdate();
 
 		void SetEventCallback(const EventCallbackFn& callback) { _data.EventCallback = callback; }

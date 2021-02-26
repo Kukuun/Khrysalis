@@ -126,9 +126,11 @@ namespace Khrysalis {
 		CenterWindow();
 	}
 
-	void Window::OnUpdate() {
+	void Window::ProcessInput() {
 		glfwPollEvents();
+	}
 
+	void Window::OnUpdate() {
 		Renderer::SwapBuffers();
 	}
 
