@@ -13,5 +13,8 @@ namespace Khrysalis {
 		virtual void OnUpdate(float deltaTime) override;
 		virtual void OnImGuiRender() override;
 		virtual void OnEvent(Event& event) override;
+
+	private:
+		Vector2 _viewport = { 0.0f, 0.0f };
 	};
 }

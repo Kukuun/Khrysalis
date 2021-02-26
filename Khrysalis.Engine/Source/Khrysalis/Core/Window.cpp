@@ -3,9 +3,13 @@
 #include "Khrysalis/Events/ApplicationEvent.h"
 #include "Khrysalis/Events/KeyEvent.h"
 #include "Khrysalis/Events/MouseEvent.h"
+#include "Khrysalis/Graphics/Renderer.h"
 
+//#include <glad/glad.h>
+
+#define GLFW_EXPOSE_NATIVE_WIN32
 #include <glfw/glfw3.h>
-#include <glad/glad.h>
+#include <glfw/glfw3native.h>
 
 namespace Khrysalis {
 	Window::Window(const WindowProps& properties) {
@@ -30,11 +34,9 @@ namespace Khrysalis {
 			KAL_ENGINE_ERROR("GLFW error ({0}): {1}", error, description);
 		});
 
-		_window = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
+		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-		glfwMakeContextCurrent(_window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		KAL_ENGINE_ASSERT(status, "Failed to initialize Glad.");
+		_window = glfwCreateWindow(_data.Width, _data.Height, _data.Title.c_str(), nullptr, nullptr);
 
 		glfwSetWindowUserPointer(_window, &_data);
 		SetVSync(true);
@@ -126,15 +128,12 @@ namespace Khrysalis {
 
 	void Window::OnUpdate() {
 		glfwPollEvents();
-		glfwSwapBuffers(_window);
+
+		Renderer::SwapBuffers();
 	}
 
 	void Window::SetVSync(bool enabled) {
-		if (enabled)
-			glfwSwapInterval(1);
-		else
-			glfwSwapInterval(0);
-
+		Renderer::SetVsync(enabled);
 		_data.VSync = enabled;
 	}
 
@@ -161,5 +160,9 @@ namespace Khrysalis {
 	void Window::Shutdown() {
 		glfwDestroyWindow(_window);
 		glfwTerminate();
+	}
+
+	HWND Window::GetHwndHandle() const {
+		return glfwGetWin32Window(_window);
 	}
 }

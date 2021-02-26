@@ -3,11 +3,11 @@
 GameLayer::GameLayer() : Layer("App") {}
 
 void GameLayer::OnAttach() {
-	KAL_TRACE("GameLayer::OnAttach");
+	//KAL_TRACE("GameLayer::OnAttach");
 }
 
 void GameLayer::OnDetach() {
-	KAL_TRACE("GameLayer::OnDetach");
+	//KAL_TRACE("GameLayer::OnDetach");
 }
 
 void GameLayer::OnUpdate(float deltaTime) {
@@ -15,8 +15,7 @@ void GameLayer::OnUpdate(float deltaTime) {
 }
 
 void GameLayer::OnEvent(Khrysalis::Event& event) {
-	KAL_TRACE("Event: {0}", event);
+	//KAL_TRACE("Event: {0}", event);
 }
 
-void GameLayer::OnImGuiRender() {
-}
+void GameLayer::OnImGuiRender() {}

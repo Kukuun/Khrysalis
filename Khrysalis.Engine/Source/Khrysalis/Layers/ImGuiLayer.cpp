@@ -4,10 +4,12 @@
 
 #include <imgui.h>
 #include <examples/imgui_impl_glfw.h>
-#include <examples/imgui_impl_opengl3.h>
+#include <examples/imgui_impl_dx11.h>
+
+#include "Khrysalis/Graphics/Renderer.h"
+#include "Khrysalis/Graphics/D3D/D3D11Renderer.h"
 
 #include <glfw/glfw3.h>
-#include <glad/glad.h>
 
 namespace Khrysalis {
 	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {}
@@ -30,14 +32,22 @@ namespace Khrysalis {
 		SetDarkThemeColors();
 
 		GLFWwindow* window = Application::Get().GetWindow().GetNativeWindow();
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init("#version 410");
+		D3D11Renderer* renderer = static_cast<D3D11Renderer*>(Renderer::Get());
+		ID3D11Device* device = renderer->GetDevice();
+		ID3D11DeviceContext* context = renderer->GetDeviceContext();
+
+		ImGui_ImplGlfw_InitForDirect3D(window, true);
+		ImGui_ImplDX11_Init(device, context);
 	}
 
 	void ImGuiLayer::OnDetach() {
-		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplDX11_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
+	}
+
+	void ImGuiLayer::OnImGuiRender() {
+		//Renderer::Submit({});
 	}
 
 	void ImGuiLayer::OnEvent(Event& event) {
@@ -49,7 +59,7 @@ namespace Khrysalis {
 	}
 
 	void ImGuiLayer::Begin() {
-		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
@@ -60,13 +70,12 @@ namespace Khrysalis {
 		io.DisplaySize = ImVec2((float)application.GetWindow().GetWidth(), (float)application.GetWindow().GetHeight());
 
 		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		Renderer::Clear();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
-			GLFWwindow* backup_current_context = glfwGetCurrentContext();
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
-			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
 

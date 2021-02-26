@@ -1,5 +1,7 @@
 #include "EditorLayer.h"
 
+#include "Khrysalis/Graphics/Renderer.h"
+
 #include <imgui/imgui.h>
 
 namespace Khrysalis {
@@ -15,6 +17,11 @@ namespace Khrysalis {
 
 	void EditorLayer::OnUpdate(float deltaTime) {
 		//KAL_TRACE("{0:.3f} m/s", deltaTime * 1000);
+
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		if (_viewport.X != viewport->Size.x || _viewport.Y != viewport->Size.y) {
+			Renderer::Resize((uint16_t)viewport->Size.x, (uint16_t)viewport->Size.y);
+		}
 	}
 
 	void EditorLayer::OnImGuiRender() {
@@ -69,7 +76,13 @@ namespace Khrysalis {
 			ImGui::EndMenuBar();
 		}
 
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+
 		ImGui::Begin("Viewport");
+		
+		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+		_viewport = { viewportPanelSize.x, viewportPanelSize.y };
+		
 		ImGui::End();
 
 		ImGui::Begin("Hierarchy");
@@ -81,6 +94,7 @@ namespace Khrysalis {
 		ImGui::Begin("Content Browser");
 		ImGui::End();
 
+		ImGui::PopStyleVar();
 		ImGui::End();
 	}
 

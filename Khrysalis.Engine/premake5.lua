@@ -36,7 +36,9 @@ project "Khrysalis.Engine"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
+		"d3d11.lib",
+		"dxgi.lib",
+		"d3dcompiler.lib"
 	}
 
 	filter "system:windows"

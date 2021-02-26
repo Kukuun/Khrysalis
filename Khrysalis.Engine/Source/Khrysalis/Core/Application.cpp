@@ -3,6 +3,9 @@
 #include "Khrysalis/Debug/Log.h"
 #include "Khrysalis/Events/ApplicationEvent.h"
 
+#include "Khrysalis/Graphics/Renderer.h"
+#include "Khrysalis/Graphics/D3D/D3D11Renderer.h"
+
 #include <glfw/glfw3.h>
 
 namespace Khrysalis {
@@ -14,8 +17,14 @@ namespace Khrysalis {
 		_window = std::make_unique<Window>(WindowProps());
 		_window->SetEventCallback(KAL_BIND_EVENT_FN(Application::OnEvent));
 
+		Renderer::Initialize();
+
 		_imguiLayer = new ImGuiLayer();
 		PushOverlay(_imguiLayer);
+	}
+
+	Application::~Application() {
+		Renderer::Shutdown();
 	}
 
 	void Application::Run() {

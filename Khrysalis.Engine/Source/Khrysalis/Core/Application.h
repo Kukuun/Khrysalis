@@ -17,7 +17,7 @@ namespace Khrysalis {
 	class Application {
 	public:
 		explicit Application(const std::string& name, const Version& version = { 1, 0, 0 });
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void OnEvent(Event& event);
 

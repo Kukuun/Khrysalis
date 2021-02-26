@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Khrysalis/Events/Event.h"
+//#include "Khrysalis/Graphics/GraphicsContext.h"
 
 struct GLFWwindow;
 
@@ -34,9 +35,11 @@ namespace Khrysalis {
 		void Shutdown();
 
 		GLFWwindow* GetNativeWindow() const { return _window; }
+		HWND GetHwndHandle() const;
 
 		int16_t GetWidth() const { return _data.Width; }
 		int16_t GetHeight() const { return _data.Height; }
+		bool GetVSync() const { return _data.VSync; }
 
 	private:
 		GLFWwindow* _window;
@@ -51,7 +54,7 @@ namespace Khrysalis {
 
 		WindowData _data;
 
-		uint16_t _minWidth = 720;
-		uint16_t _minHeight = 540;
+		uint16_t _minWidth = 800;
+		uint16_t _minHeight = 600;
 	};
 }
